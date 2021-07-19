@@ -1,0 +1,711 @@
+* {
+    box-sizing: border-box;
+}
+
+.inline-div {
+    display: flex;
+}
+
+.flex {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+body {
+    background-image: url(../imagini/main-background.jpg);
+    background-repeat: repeat;
+    background-size: cover;
+    overflow: hidden;
+}
+
+html, body, .main {
+    height: 100%;
+}
+
+header {
+    position: absolute;
+    width: 100vw;
+    z-index: 3;
+}
+
+#help-for-hover {
+    width: 100%;
+    height: 30vh;
+    transition: 300ms;
+}
+
+#help-for-hover:hover #extend-header {
+    opacity: .95;
+}
+
+#header {
+    display: flex;
+    border-bottom: 1px solid white;
+    padding: 2vh 2vw;
+    overflow: hidden;
+    transition: 300ms;
+}
+
+#header-logo {
+    width: 4vw;
+    height: 4vw;
+}
+
+/* account name */
+
+.header-name {
+    color: white;
+    flex-grow: 1;
+    font-size: 2.5em;
+    font-family: 'Noto Sans JP', sans-serif;
+}
+
+/* sign in */
+/*
+.blue-btn {
+    background-color: limegreen;
+    border-radius: 5px;
+    font-size: 2vh;
+    padding: 0px 2vw;
+    margin-left: auto;
+    max-height: 50px;
+}*/
+
+#extend-header {
+    color: white;
+    font-size: 2em;
+    opacity: 0;
+    float: right;
+    position: relative;
+    margin-right: 3vw;
+    margin-top: 2vh;
+    width: 5vh;
+    height: 5vh;
+    border-radius: 50%;
+    border: 1px solid white;
+    line-height: 5vh;
+    text-align: center;
+    transition: 200ms;
+}
+
+#extend-header:hover {
+    cursor: pointer;
+    background-color: #f0f3ff;
+    color: black;
+}
+
+#content {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    box-sizing: border-box;
+    padding-top: 10%;
+    max-width: 100%;
+    overflow: hidden;
+}
+
+.calendar-parent {
+    width: 100%;
+    height: 100%;
+}
+
+.calendar {
+    height: 95%;
+    width: 80%;
+    border: 10px solid;
+    border-image-slice: 1;
+    border-width: 5px;
+    border-image-source: linear-gradient(to left, #00C853, #B2FF59);
+    position: relative;
+}
+
+/*
+//
+//
+// INCEPEM CALENDARUL PROPRIU ZIS
+//
+//
+//
+*/
+
+/*
+//
+//
+//
+//
+// KEYBOARD
+//
+//
+//
+*/
+
+.keyboard{
+    position: absolute;
+    left: -10%;
+    height: 8%;
+    height: 3rem;
+    border-radius: 50%;
+    background-color: limegreen;
+    cursor: pointer;
+    z-index: 4;
+}
+
+.keyboard:hover{
+    border: 1px solid white;
+}
+
+.keyboard img{
+    width: 80%;
+}
+
+/*
+//
+// LEFFT
+//
+*/
+
+.calendar-left {
+    height: 100%;
+    width: 40%;
+    /*35%*/
+}
+
+.calendar-events {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(84, 217, 2, 0.5);
+}
+
+/* selected date */
+
+.note-selected-date {
+    margin: 15px 20px 20px;
+    border-top: 2px solid black;
+    font-size: 2em;
+    font-family: 'Arima Madurai', cursive;
+    padding-top: 15px;
+}
+
+/* 
+//
+//
+//
+// ! EVENTS !
+//
+//
+//
+*/
+
+.events-container {
+    flex-grow: 1;
+    padding: 5%;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+}
+
+/* input div */
+
+.input {
+    display: flex;
+    border-bottom: 1px solid #45f7bf;
+    padding-bottom: 5px;
+    transition: 100ms;
+}
+
+.input * {
+    margin: 0 5px;
+}
+
+.input input {
+    flex-grow: 1;
+    border: none !important;
+    background: none !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+}
+
+.input input::placeholder {
+    color: black;
+    opacity: .7;
+}
+
+.input button {
+    display: none;
+    border: none !important;
+    background: none !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+    text-transform: uppercase;
+}
+
+/* notes added */
+
+.for-scroll {
+    flex-grow: 1;
+}
+
+.submited-events-container {
+    min-height: 0;
+    overflow-y: auto;
+    width: 100%;
+}
+
+/* scrollbar */
+
+.submited-events-container::-webkit-scrollbar {
+    width: 3px;
+}
+
+.submited-events-container::-webkit-scrollbar-track {
+    background: #000f0d;
+}
+
+.submited-events-container::-webkit-scrollbar-thumb {
+    background: white;
+}
+
+.submited-events-container::-webkit-scrollbar-thumb:hover {
+    background: #d9fff9;
+}
+
+/* note div */
+
+.note {
+    max-width: 100%;
+    padding: 20px 10px;
+    border-bottom: 1px solid #45f7bf;
+    color: white;
+    /* salveaza <br> din textarea */
+    white-space: pre-line;
+    position: relative;
+}
+
+/* trash (delete note)*/
+.trash{
+    position: absolute;
+    height: 1.2rem;
+    right: 0;
+    opacity: 0;
+}
+
+.note:hover > img{
+    opacity: 1;
+}
+
+.trash:hover{
+    opacity: .5 !important;
+    cursor: pointer;
+}
+
+/* TRIUNGHI */
+
+.calendar-triangle {
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-color: rgba(84, 217, 2, 0.5) transparent transparent transparent;
+    position: absolute;
+}
+
+/*
+//
+// RIGHT
+//
+*/
+
+.calendar-right {
+    height: 100%;
+    width: 60%;
+    /*65%*/
+    position: relative;
+}
+
+/* right top */
+
+.right-up {
+    height: 15%;
+    float: right;
+    position: relative;
+}
+
+.calendar-arrows {
+    width: 100%;
+    font-size: 3em;
+    color: white;
+    padding: 20px 30px;
+    justify-content: space-between;
+    box-sizing: border-box;
+}
+
+.left, .right {
+    cursor: pointer;
+    z-index: 4;
+}
+
+.calendar-month-and-year {
+    width: 100%;
+    position: absolute;
+    bottom: 20%;
+    font-family: 'Ubuntu', sans-serif;
+    color: white;
+}
+
+.month {
+    font-size: 2em;
+    padding-right: 20px;
+}
+
+.year {
+    font-size: 2.5em;
+}
+
+.month-and-year-border {
+    display: inline-block;
+    width: auto;
+    border-bottom: 2px solid white;
+}
+
+/* table */
+
+.calendar-table {
+    width: 100%;
+    height: 75%;
+    position: absolute;
+    top: 15%;
+    padding: 20px 10% 0px 20%;
+}
+
+/* Luni-Duminica height */
+
+.weekdays {
+    height: calc(100% / 7);
+}
+
+/* Luni-Duminica position & border */
+
+.weekdays div {
+    height: 100%;
+    width: calc(100% / 7);
+    border-right: 1px solid white;
+    border-bottom: 1px solid white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+
+/* eliminare border la ultima coloana */
+
+.weekdays div:nth-child(7n) {
+    border-right: none;
+}
+
+.days div:nth-child(7n) {
+    border-right: none;
+}
+
+/* days parent height */
+
+.days {
+    flex-wrap: wrap;
+    height: calc(100% / 7 * 6);
+}
+
+/* days prev + current + next */
+
+.days div {
+    width: calc(100% / 7);
+    height: calc(100% / 6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-right: 1px solid white;
+    cursor: pointer;
+}
+
+.days div:hover {
+    background-color: rgba(84, 217, 2, 0.5);
+}
+
+/* colors for days */
+
+.prev-date {
+    color: red;
+}
+
+.current-month-days {
+    color: white;
+}
+
+.today {
+    background-color: rgba(223, 252, 0, .5);
+    border-radius: 50%;
+    height: 100%;
+}
+
+.next-date {
+    color: green;
+}
+
+#selected-date {
+    background-color: rgba(223, 252, 0, .5);
+}
+
+/* copyright*/
+
+.calendar-copyright {
+    justify-content: space-between;
+    width: 95%;
+    height: 10%;
+    position: absolute;
+    bottom: 0;
+    color: white;
+}
+
+.calendar-copyright img {
+    z-index: 5;
+    height: 100%;
+    cursor: pointer;
+    transition: 200ms;
+}
+
+.calendar-copyright img:hover {
+    transform: rotate(45deg);
+}
+
+/*
+//
+//
+// *****
+//
+//
+// POP-UP
+//
+//
+// *****
+//
+//
+*/
+
+/* parent pe care dai click ca sa inchizi */
+
+.plus-date-pop-up-parent, .sign-up-pop-up-parent {
+    margin-top: 100vh;
+    height: 100%;
+    width: 100vw;
+    z-index: 6;
+    position: absolute;
+    transition: 300ms ease-out;
+    cursor: pointer;
+}
+
+/* pop-up in sine, ce e in border gen*/
+
+.plus-date-pop-up, .sign-up-pop-up{
+    position: relative;
+    width: 50%;
+    height: 60%;
+    /* margin-left: 25%;
+    margin-top: 15%; */
+    /* STERGE CLASA "FLEX" LA .PLUS-DATE-POP-UP-PARENT SI REPUNE MARGIN PENTRU ALINIERE MAI JOS */
+    cursor: initial;
+    border: 2px solid yellow;
+    background-color: black;
+    -webkit-box-shadow: 0px 0px 10px 2px #FFFB00;
+    box-shadow: 0px 0px 10px 2px #FFFB00;
+    display: flex;
+    flex-direction: column;
+    font-family: 'Raleway', sans-serif;
+}
+
+/* X button */
+
+.pop-up-close, .sign-up-close{
+    position: absolute;
+    left: 105%;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 2px solid white;
+    background-color: black;
+    color: white;
+    font-family: 'Metrophobic', sans-serif;
+    cursor: pointer;
+}
+
+
+
+.pop-up-close:hover{
+    background-color: #383838;
+}
+
+
+/* incepem pop-up-ul in sine */
+
+/* titlu */
+
+.pop-up-title {
+    display: inline-block;
+    margin: 3% 0% 3% 10%;
+    border-bottom: 1px solid white;
+    color: white;
+    font-size: 2.3em;
+}
+
+.pop-up-input-parent {
+    justify-content: space-around;
+    color: white;
+}
+
+.pop-up-input-child {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.pop-up-input-child p {
+    margin-bottom: 10%;
+}
+
+/* STYLE FORM - SELECT - OPTION */
+
+:root {
+    --radius: 2em;
+    --baseFg: #fbff00;
+    --baseBg: black;
+    --accentFg: #b3ff00;
+    --accentBg: #dfff2b;
+}
+
+.pop-up-input-child form select {
+    font: 400 12px/1.3 sans-serif;
+    -webkit-appearance: none;
+    appearance: none;
+    color: var(--baseFg);
+    border: 1px solid var(--baseFg);
+    line-height: 1;
+    outline: 0;
+    padding: 0.65em 2.5em 0.55em 0.75em;
+    border-radius: var(--radius);
+    background-color: var(--baseBg);
+    background-image: linear-gradient(var(--baseFg), var(--baseFg)), linear-gradient(-135deg, transparent 50%, var(--accentBg) 50%), linear-gradient(-225deg, transparent 50%, var(--accentBg) 50%), linear-gradient(var(--accentBg) 42%, var(--accentFg) 42%);
+    background-repeat: no-repeat, no-repeat, no-repeat, no-repeat;
+    background-size: 1px 100%, 20px 22px, 20px 22px, 20px 100%;
+    background-position: right 20px center, right bottom, right bottom, right bottom;
+}
+
+.pop-up-input-child form select:hover {
+    background-image: linear-gradient(var(--accentFg), var(--accentFg)), linear-gradient(-135deg, transparent 50%, var(--accentFg) 50%), linear-gradient(-225deg, transparent 50%, var(--accentFg) 50%), linear-gradient(var(--accentFg) 42%, var(--accentBg) 42%);
+}
+
+.pop-up-input-child form select:active {
+    background-image: linear-gradient(var(--accentFg), var(--accentFg)), linear-gradient(-135deg, transparent 50%, var(--accentFg) 50%), linear-gradient(-225deg, transparent 50%, var(--accentFg) 50%), linear-gradient(var(--accentFg) 42%, var(--accentBg) 42%);
+    color: var(--accentBg);
+    border-color: var(--accentFg);
+    background-color: var(--accentFg);
+}
+
+/* main - cu input (textarea) */
+
+.pop-up-main {
+    margin: 5%;
+    flex-grow: 1;
+}
+
+.pop-up-main textarea {
+    width: 90%;
+    height: 100%;
+    resize: none;
+    background-color: black;
+    color: yellow;
+    outline: none !important;
+    border: 1px solid yellow;
+    box-shadow: 0px 0px 2px 2px yellowgreen;
+    overflow-y: auto;
+    /* fara astea de jos nu merge font-ul*/
+    font-family: inherit;
+    font-size: inherit;
+    padding: 10px;
+}
+
+/* scrollbar */
+
+.pop-up-main textarea::-webkit-scrollbar {
+    width: 5px;
+}
+
+.pop-up-main textarea::-webkit-scrollbar-track {
+    background: #000f0d;
+}
+
+.pop-up-main textarea::-webkit-scrollbar-thumb {
+    background: white;
+}
+
+.pop-up-main textarea::-webkit-scrollbar-thumb:hover {
+    background: #d9fff9;
+}
+
+.pop-up-main textarea::placeholder {
+    color: #bfc200;
+}
+
+/* submit */
+
+.pop-up-submit-parent {
+    margin: 2%;
+}
+
+.pop-up-submit {
+    background-color: yellow;
+    color: black;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+.pop-up-submit:hover {
+    background-color: #d7d950;
+}
+
+/* 
+cam prost loc sa pun, da' na
+zilele puse cu input din tastatura
+*/
+
+.note-selected-date-child div{
+    border-radius: 3px;
+}
+
+/*
+// EROARE INPUT KEYBOARD
+*/
+
+#error-keyboard-input{
+    color: red;
+    background-color: black;
+    border-left: 1px solid red;
+    border-right: 1px solid red;
+    border-radius: 4px;
+    padding: 10px 30px;
+    position: absolute;
+    top: -10%;
+}
+
+
+
+
+
+
+
+
+
+/* altele */
+#login-to-insert-notes{
+    font-family: 'Noto Sans JP', sans-serif;
+    text-indent: 10px;
+}
